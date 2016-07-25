@@ -5,6 +5,8 @@
 
 require_once('common.php');
 
+$userParams = parse_ini_file(dirname(__FILE__).DIRECTORY_SEPARATOR.'user_params.ini');
+
 // This is the main Web application configuration. Any writable
 // CWebApplication properties can be configured here.
 return array(
@@ -65,7 +67,7 @@ return array(
         'daemon' => array(
             'class' => 'Daemon',
             'host' => '127.0.0.1',
-            'servicePort' => '50',
+            'servicePort' => $userParams['service_port'],
         ),
         'errorHandler' => array(
             // use 'site/error' action to display errors

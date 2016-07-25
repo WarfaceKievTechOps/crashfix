@@ -13,7 +13,7 @@ class m130414_150316_add_indexes extends CDbMigration
         $this->createIndex(
                 'crashreport_project', 
                 '{{crashreport}}', 
-                'project_id, appversion_id, groupid', 
+                'project_id, appversion_id, groupid', 'status',
                 false);
         
         $this->createIndex(

@@ -221,15 +221,13 @@ class Project extends CActiveRecord
 			$criteria->compare('appversion_id', $appver, false, 'AND');
 		}
 		
-		$crashReports = CrashReport::model()->findAll($criteria);
-		
 		// Calculate count of crash reports
 		$count = CrashReport::model()->count($criteria);
 		
 		// Calculate total file size
 		$totalFileSize = 0;
-		foreach($crashReports as $crashReport)
-			$totalFileSize += $crashReport->filesize;
+		$criteria->select = 'sum(filesize) as totalFileSize';
+		$totalFileSize = CrashReport::model()->find($criteria)->getAttribute('totalFileSize');
 				
 		// Calc percent of disk quota
         if($this->crash_report_files_disc_quota<=0) // unlimited

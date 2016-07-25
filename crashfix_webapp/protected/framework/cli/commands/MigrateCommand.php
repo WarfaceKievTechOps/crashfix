@@ -61,7 +61,7 @@ class MigrateCommand extends CConsoleCommand
 	 * @var boolean whether to execute the migration in an interactive mode. Defaults to true.
 	 * Set this to false when performing migration in a cron job or background process.
 	 */
-	public $interactive=true;
+	public $interactive=false;
 
 	public function beforeAction($action,$params)
 	{

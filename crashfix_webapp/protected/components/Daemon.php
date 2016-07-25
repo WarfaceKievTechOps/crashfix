@@ -292,6 +292,7 @@ class Daemon extends CApplicationComponent
 	 */
 	private function sendRequest($request, &$responce)
 	{
+	    $userParams = parse_ini_file(dirname(__FILE__).'/../config/user_params.ini');
 		$responce = "";
 		$errorCode = -1;		
 				
@@ -303,8 +304,9 @@ class Daemon extends CApplicationComponent
 			return -1;
 		} 
 		
-		// Connect socket	
-		$result = @socket_connect($sock, '127.0.0.1', '50');
+		// Connect socket
+
+		$result = @socket_connect($sock, '127.0.0.1', $userParams['service_port']);
 		if( FALSE === $result ) 
 		{
 			$responce = "Error connecting to daemon.";

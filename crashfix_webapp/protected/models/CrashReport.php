@@ -16,6 +16,7 @@ class CrashReport extends CActiveRecord
     public $fileAttachmentIsUploaded = true;    // Set to TRUE if attachment was uploaded; or set to false if it resides in local filesystem.
 	public $ignoreFileAttachmentErrors = false; // Used in tests
 	public $cnt; // Count (used in stat query)
+	public $totalFileSize; // used for quota calculation
 	
 	// Search related attributes
 	public $filter; // Simple search filter.
